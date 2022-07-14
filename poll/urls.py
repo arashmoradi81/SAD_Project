@@ -4,4 +4,6 @@ from . import views
 urlpatterns = [
     path('', views.HomePage, name='home-page'),
     path('create-vote/', views.CreateVote, name='create-vote'),
+    path('open-end/<str:pk>/', views.AddOpenEnd, name='open-end'),
+    path('add-question/<str:pk>/', views.AddQuestion, name='add-question')
 ]

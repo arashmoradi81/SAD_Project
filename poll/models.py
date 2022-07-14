@@ -17,8 +17,8 @@ class OpenEnd(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     question = models.CharField(blank=False, null=False, max_length=200)
 
-    def __str__(self):
-        return self.question
+    # def __str__(self):
+    #     return self.question
 
 
 class OpenEnd_Answer(models.Model):
@@ -26,8 +26,8 @@ class OpenEnd_Answer(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     answer = models.TextField(blank=True, null=True)
 
-    def __str__(self):
-        return self.answer
+    # def __str__(self):
+    #     return self.answer
 
 
 class CloseTest(models.Model):
@@ -39,8 +39,8 @@ class CloseTest(models.Model):
     radio3 = models.CharField(blank=True, null=True, max_length=200)
     radio4 = models.CharField(blank=True, null=True, max_length=200)
 
-    def __str__(self):
-        return self.question
+    # def __str__(self):
+    #     return self.question
 
 
 radios = (
@@ -52,8 +52,8 @@ radios = (
 class CloseTest_Answer(models.Model):
     q_id = models.ForeignKey(CloseTest, on_delete=models.CASCADE)
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
-    answer = models.CharField(max_length=200, choices=radios)
+    # answer = models.CharField(max_length=200, choices=radios)
 
-    def __str__(self):
-        return self.answer
+    # def __str__(self):
+    #     return self.answer
 
