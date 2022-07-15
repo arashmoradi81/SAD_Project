@@ -13,12 +13,12 @@ class Poll(models.Model):
 
 
 class OpenEnd(models.Model):
-    p_id = models.ForeignKey(Poll, on_delete=models.CASCADE)
+    p_id = models.ForeignKey(Poll, on_delete=models.CASCADE, related_name='poll')
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     question = models.CharField(blank=False, null=False, max_length=200)
 
-    # def __str__(self):
-    #     return self.question
+    def __str__(self):
+        return self.question
 
 
 class OpenEnd_Answer(models.Model):
@@ -39,8 +39,8 @@ class CloseTest(models.Model):
     radio3 = models.CharField(blank=True, null=True, max_length=200)
     radio4 = models.CharField(blank=True, null=True, max_length=200)
 
-    # def __str__(self):
-    #     return self.question
+    def __str__(self):
+        return self.question
 
 
 radios = (

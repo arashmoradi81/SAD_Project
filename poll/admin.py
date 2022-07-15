@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Poll, OpenEnd
-
+from .models import Poll, OpenEnd, OpenEnd_Answer
 
 @admin.register(Poll)
 class PollAdmin(admin.ModelAdmin):
@@ -9,4 +8,8 @@ class PollAdmin(admin.ModelAdmin):
 @admin.register(OpenEnd)
 class OpenEndAdmin(admin.ModelAdmin):
     list_display = ('p_id', 'id', 'question', )
+
+@admin.register(OpenEnd_Answer)
+class OpenEndAnswerAdmin(admin.ModelAdmin):
+    list_display = ('q_id', 'id', 'answer', )
 

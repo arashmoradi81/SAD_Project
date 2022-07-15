@@ -14,7 +14,7 @@ class PollForm(ModelForm):
 class OpenEndForm(ModelForm):
     class Meta:
         model = OpenEnd
-        fields = ['question', 'p_id']
+        fields = ['p_id', 'question']
 
     def __init__(self, *args, **kwargs):
         super(OpenEndForm, self).__init__(*args, **kwargs)
@@ -23,7 +23,7 @@ class OpenEndForm(ModelForm):
 class CloseTestForm(ModelForm):
     class Meta:
         model = CloseTest
-        fields = ['question', 'radio1', 'radio2', 'radio3', 'radio4']
+        fields = ['p_id', 'question', 'radio1', 'radio2', 'radio3', 'radio4']
 
     def __init__(self, *args, **kwargs):
         super(CloseTestForm, self).__init__(*args, **kwargs)

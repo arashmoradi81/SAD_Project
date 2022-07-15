@@ -6,7 +6,7 @@
 </head>
 <body>
 <a href="{% url 'open-end' id %}">+ add open end question</a><br>
-<a>+ add close test</a><br>
+<a href="{% url 'close-test' id %}">+ add close test</a><br>
 <form action="{% url 'home-page' %}">
     <input type="submit" value="end poll">
 </form>

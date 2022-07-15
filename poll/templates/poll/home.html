@@ -7,7 +7,10 @@
 <body>
 <a href="{% url 'create-vote' %}">+ create new vote</a>
 {% for c in context %}
-    <p>{{ c.title }}</p>
+    <br><br>
+    <i>Poll: {{ c.title }}</i>
+    <a>Fill Poll</a>
+    <a>View Result</a>
 {% endfor %}
 </body>
 </html>
