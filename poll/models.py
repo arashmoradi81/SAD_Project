@@ -22,7 +22,7 @@ class OpenEnd(models.Model):
 
 
 class OpenEnd_Answer(models.Model):
-    q_id = models.ForeignKey(OpenEnd, on_delete=models.CASCADE)
+    q_id = models.ForeignKey(OpenEnd, on_delete=models.CASCADE, related_name='openToAnswer')
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     answer = models.TextField(blank=True, null=True)
 
@@ -41,6 +41,6 @@ class CloseTest(models.Model):
 
 
 class CloseTest_Answer(models.Model):
-    q_id = models.ForeignKey(CloseTest, on_delete=models.CASCADE)
+    q_id = models.ForeignKey(CloseTest, on_delete=models.CASCADE, related_name='closeToAnswer')
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     answer = models.CharField(max_length=200, null=True, blank=True)

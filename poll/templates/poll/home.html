@@ -10,7 +10,7 @@
     <br><br>
     <i>Poll: {{ c.title }}</i>
     <a href="{% url 'fill-poll' c.id %}">Fill Poll</a>
-    <a>View Result</a>
+    <a href="{% url 'view-result' c.id %}">View Result</a>
 {% endfor %}
 </body>
 </html>

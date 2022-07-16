@@ -8,4 +8,5 @@ urlpatterns = [
     path('add-question/<str:pk>/', views.AddQuestion, name='add-question'),
     path('close-test/<str:pk>/', views.AddCloseTest, name='close-test'),
     path('fill-poll/<str:pk>/', views.FillPoll, name='fill-poll'),
+    path('view-result/<str:pk>/', views.ViewResult, name='view-result'),
 ]

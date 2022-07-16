@@ -65,3 +65,25 @@ def FillPoll(request, pk):
         {'answer': f[i]['answer'], 'question': c[i].question, 'radio1': c[i].radio1, 'radio2': c[i].radio2,
          'radio3': c[i].radio3, 'radio4': c[i].radio4} for i in range(len(f)))}
     return render(request, 'poll/form-poll.html', context)
+
+
+def ViewResult(request, pk):
+    openends = models.Poll.objects.get(id=pk).poll_openend.all()
+    questions = []
+    answers = []
+    for openend in openends:
+        questions.append(openend.question)
+        answers.append([])
+        ans = openend.openToAnswer.all()
+        for a in ans:
+            answers[-1].append(a.answer)
+    closetests = models.Poll.objects.get(id=pk).poll_closetest.all()
+    for closetest in closetests:
+        questions.append(closetest.question)
+        answers.append([])
+        ans = closetest.closeToAnswer.all()
+        for a in ans:
+            answers[-1].append(a.answer)
+
+    context ={'form': ({'question': questions[i], 'answer': answers[i]} for i in range(len(questions)))}
+    return render(request, 'poll/view-poll.html', context)
