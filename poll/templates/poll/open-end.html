@@ -9,14 +9,6 @@
     {% csrf_token %}
     <label>{{ form.label }}</label>
     {{ form }}
-{#    {% for f in form %}#}
-{#        {% if f.label == 'P id' %}#}
-{#            <label>poll</label><br>#}
-{#        {% else %}#}
-{#            <label>{{ f.label }}</label><br>#}
-{#        {% endif %}#}
-{#        {{ f }}<br>#}
-{#    {% endfor %}#}
     <input type="submit" value="Add">
 </form>
 </body>

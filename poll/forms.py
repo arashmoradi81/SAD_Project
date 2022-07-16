@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Poll, OpenEnd, CloseTest
+from .models import Poll, OpenEnd, CloseTest, OpenEnd_Answer, CloseTest_Answer
 
 
 class PollForm(ModelForm):
@@ -27,3 +27,12 @@ class CloseTestForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(CloseTestForm, self).__init__(*args, **kwargs)
+
+
+class OpenEndAnswerForm(ModelForm):
+    class Meta:
+        model = OpenEnd_Answer
+        fields = ['q_id', 'answer']
+
+    def __init__(self, *args, **kwargs):
+        super(OpenEndAnswerForm, self).__init__(*args, **kwargs)

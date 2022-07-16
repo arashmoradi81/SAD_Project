@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>poll form</title>
+</head>
+<body>
+{% for f in form %}
+    <form method="POST">
+        {% csrf_token %}
+        <label>{{ f.question }}</label><br>
+        {{ f.answer }}<br>
+        <input type="submit" value="confirm" name="{{ f.question }}">
+    </form>
+{% endfor %}
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="end fill" name="home">
+</form>
+</body>
+</html>

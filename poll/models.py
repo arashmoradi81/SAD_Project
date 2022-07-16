@@ -13,7 +13,7 @@ class Poll(models.Model):
 
 
 class OpenEnd(models.Model):
-    p_id = models.ForeignKey(Poll, on_delete=models.CASCADE, related_name='poll')
+    p_id = models.ForeignKey(Poll, on_delete=models.CASCADE, related_name='poll_openend')
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     question = models.CharField(blank=False, null=False, max_length=200)
 
@@ -31,7 +31,7 @@ class OpenEnd_Answer(models.Model):
 
 
 class CloseTest(models.Model):
-    p_id = models.ForeignKey(Poll, on_delete=models.CASCADE)
+    p_id = models.ForeignKey(Poll, on_delete=models.CASCADE, related_name='poll_closetest')
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     question = models.CharField(blank=False, null=False, max_length=200)
     radio1 = models.CharField(blank=True, null=True, max_length=200)

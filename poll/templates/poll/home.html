@@ -9,7 +9,7 @@
 {% for c in context %}
     <br><br>
     <i>Poll: {{ c.title }}</i>
-    <a>Fill Poll</a>
+    <a href="{% url 'fill-poll' c.id %}">Fill Poll</a>
     <a>View Result</a>
 {% endfor %}
 </body>
