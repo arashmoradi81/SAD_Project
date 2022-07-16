@@ -5,10 +5,19 @@
     <title>poll form</title>
 </head>
 <body>
-{% for f in form %}
+{% for f in form1 %}
     <form method="POST">
         {% csrf_token %}
         <label>{{ f.question }}</label><br>
+        {{ f.answer }}<br>
+        <input type="submit" value="confirm" name="{{ f.question }}">
+    </form>
+{% endfor %}
+{% for f in form2 %}
+    <form method="POST">
+        {% csrf_token %}
+        <label>{{ f.question }}</label><br>
+        <label>Options: 1-{{ f.radio1 }}, 2-{{ f.radio2 }}, 3-{{ f.radio3 }}, 4-{{ f.radio4 }}</label><br>
         {{ f.answer }}<br>
         <input type="submit" value="confirm" name="{{ f.question }}">
     </form>

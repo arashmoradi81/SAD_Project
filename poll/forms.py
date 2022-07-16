@@ -1,4 +1,5 @@
 from django.forms import ModelForm
+from django import forms
 from .models import Poll, OpenEnd, CloseTest, OpenEnd_Answer, CloseTest_Answer
 
 
@@ -36,3 +37,13 @@ class OpenEndAnswerForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(OpenEndAnswerForm, self).__init__(*args, **kwargs)
+
+
+class CloseTestAnswerForm(ModelForm):
+    class Meta:
+        model = CloseTest_Answer
+        fields = ['q_id', 'answer']
+        # widgets = {'answer': forms.RadioSelect()}
+
+    def __init__(self, *args, **kwargs):
+        super(CloseTestAnswerForm, self).__init__(*args, **kwargs)

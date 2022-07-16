@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from . import models
-from .forms import PollForm, OpenEndForm, CloseTestForm, OpenEndAnswerForm
+from .forms import PollForm, OpenEndForm, CloseTestForm, OpenEndAnswerForm, CloseTestAnswerForm
 
 
 def HomePage(request):
@@ -48,6 +48,8 @@ def AddCloseTest(request, pk):
 def FillPoll(request, pk):
     q = models.Poll.objects.get(id=pk).poll_openend.all()
     l = [OpenEndAnswerForm() for i in q]
+    c = models.Poll.objects.get(id=pk).poll_closetest.all()
+    f = [CloseTestAnswerForm() for i in c]
     if request.method == 'POST':
         if 'home' in request.POST:
             return redirect('home-page')
@@ -55,6 +57,11 @@ def FillPoll(request, pk):
             if q[i].question in request.POST:
                 l[i] = OpenEndAnswerForm(request.POST)
                 models.OpenEnd_Answer.objects.create(q_id=q[i], answer=l[i].data['answer'])
+            if c[i].question in request.POST:
+                f[i] = CloseTestAnswerForm(request.POST)
+                models.CloseTest_Answer.objects.create(q_id=c[i], answer=f[i].data['answer'])
 
-    context = {'form': ({'answer': l[i]['answer'], 'question': q[i].question} for i in range(len(l)))}
+    context = {'form1': ({'answer': l[i]['answer'], 'question': q[i].question} for i in range(len(l))), 'form2': (
+        {'answer': f[i]['answer'], 'question': c[i].question, 'radio1': c[i].radio1, 'radio2': c[i].radio2,
+         'radio3': c[i].radio3, 'radio4': c[i].radio4} for i in range(len(f)))}
     return render(request, 'poll/form-poll.html', context)

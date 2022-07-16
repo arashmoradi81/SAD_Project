@@ -26,9 +26,6 @@ class OpenEnd_Answer(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     answer = models.TextField(blank=True, null=True)
 
-    # def __str__(self):
-    #     return self.answer
-
 
 class CloseTest(models.Model):
     p_id = models.ForeignKey(Poll, on_delete=models.CASCADE, related_name='poll_closetest')
@@ -43,17 +40,7 @@ class CloseTest(models.Model):
         return self.question
 
 
-radios = (
-    ('radio1', ),
-    ('radio2', ),
-    ('radio3', ),
-    ('radio4', ),
-)
 class CloseTest_Answer(models.Model):
     q_id = models.ForeignKey(CloseTest, on_delete=models.CASCADE)
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
-    # answer = models.CharField(max_length=200, choices=radios)
-
-    # def __str__(self):
-    #     return self.answer
-
+    answer = models.CharField(max_length=200, null=True, blank=True)
